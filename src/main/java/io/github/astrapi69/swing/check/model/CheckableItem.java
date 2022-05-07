@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2021 Asterios Raptis
+ * Copyright (C) 2015 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -22,8 +22,18 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69;
+package io.github.astrapi69.swing.check.model;
 
-public class InitialTemplate
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.experimental.FieldDefaults;
+import lombok.experimental.SuperBuilder;
+
+@Data
+@SuperBuilder
+@FieldDefaults(level = AccessLevel.PRIVATE)
+public class CheckableItem<T>
 {
+	T checkableValue;
+	boolean selected;
 }

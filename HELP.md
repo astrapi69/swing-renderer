@@ -1,14 +1,5 @@
 # Getting Started
 
-### Rename your gradle project after cloning template project
-
-Go to the unit test class 'io.github.astrapi69.InitialTemplateTest' and set your description for your repository in the
-disabled unit test method testRenameToConcreteProject. Then enable the unit test method testRenameToConcreteProject by
-comment or delete the annotation @Disabled and run it after. This will rename your gradle project. Now you can delete
-all unrelated files and test dependencies that you do not need.
-
-Also delete the section '# Template from this project' in the README.md
-
 ### Setting Secrets
 
 When you clone from this repository you have to consider to set the secrets for the sonatype username and password.

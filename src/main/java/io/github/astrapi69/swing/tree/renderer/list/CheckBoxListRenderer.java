@@ -32,9 +32,9 @@ import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 import javax.swing.UIManager;
 
-import io.github.astrapi69.model.check.CheckableItem;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
+import io.github.astrapi69.model.check.CheckableItem;
 import io.github.astrapi69.model.check.CheckableValue;
 import io.github.astrapi69.swing.tree.renderer.CheckBoxTreeCellRenderer;
 

@@ -24,15 +24,17 @@
  */
 package io.github.astrapi69.swing.tree.renderer;
 
+import java.awt.Color;
+
+import javax.swing.Icon;
+import javax.swing.JLabel;
+
+import org.apache.commons.lang3.StringUtils;
+
 import io.github.astrapi69.icon.ImageIconFactory;
 import io.github.astrapi69.icon.StringIcon;
 import io.github.astrapi69.swing.tree.GenericTreeElement;
 import io.github.astrapi69.tree.BaseTreeNode;
-import org.apache.commons.lang3.StringUtils;
-
-import javax.swing.Icon;
-import javax.swing.JLabel;
-import java.awt.Color;
 
 public class GenericBaseTreeNodeCellRenderer<T, K>
 	extends

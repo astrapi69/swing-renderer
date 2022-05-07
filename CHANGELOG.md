@@ -4,7 +4,13 @@
 Version 1.1-SNAPSHOT
 -------------
 
+ADDED:
 
+- new dependency io.github.astrapi69:component-model in new major version 1
+
+CHANGED:
+
+- removed model classes CheckableItem and CheckableValue that now imported from the new model dependency
 
 Version 1
 -------------

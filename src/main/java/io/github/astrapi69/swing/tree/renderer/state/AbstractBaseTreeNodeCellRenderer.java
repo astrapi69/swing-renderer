@@ -33,7 +33,7 @@ import javax.swing.tree.DefaultTreeCellRenderer;
 
 import org.jdesktop.swingx.JXLabel;
 
-import io.github.astrapi69.tree.BaseTreeNode;
+import io.github.astrapi69.gen.tree.BaseTreeNode;
 
 public class AbstractBaseTreeNodeCellRenderer<T, K> extends DefaultTreeCellRenderer
 {
@@ -69,10 +69,6 @@ public class AbstractBaseTreeNodeCellRenderer<T, K> extends DefaultTreeCellRende
 		BaseTreeNode<T, K> treeNode = userObject;
 		String displayValue = treeNode.getDisplayValue();
 		treeLabel.setText(displayValue);
-		if (selected && treeNode.isLeaf())
-		{
-
-		}
 		if (treeNode.isLeaf())
 		{
 			treeLabel.setIcon(getLeafIcon());

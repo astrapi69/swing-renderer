@@ -34,7 +34,7 @@ import javax.swing.tree.DefaultTreeCellRenderer;
 
 import org.jdesktop.swingx.JXLabel;
 
-import io.github.astrapi69.tree.BaseTreeNode;
+import io.github.astrapi69.gen.tree.BaseTreeNode;
 
 public class BaseTreeNodeCellRenderer<T, K> extends DefaultTreeCellRenderer
 {

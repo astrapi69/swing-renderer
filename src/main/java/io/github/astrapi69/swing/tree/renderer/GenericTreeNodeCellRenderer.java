@@ -32,7 +32,7 @@ import org.apache.commons.lang3.StringUtils;
 import io.github.astrapi69.icon.ImageIconFactory;
 import io.github.astrapi69.icon.StringIcon;
 import io.github.astrapi69.swing.tree.GenericTreeElement;
-import io.github.astrapi69.tree.TreeNode;
+import io.github.astrapi69.gen.tree.TreeNode;
 
 public class GenericTreeNodeCellRenderer<T> extends TreeNodeCellRenderer<GenericTreeElement<T>>
 {

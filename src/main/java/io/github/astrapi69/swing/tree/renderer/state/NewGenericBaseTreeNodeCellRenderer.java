@@ -37,7 +37,7 @@ import org.jdesktop.swingx.JXLabel;
 import io.github.astrapi69.icon.ImageIconFactory;
 import io.github.astrapi69.icon.StringIcon;
 import io.github.astrapi69.swing.tree.GenericTreeElement;
-import io.github.astrapi69.tree.BaseTreeNode;
+import io.github.astrapi69.gen.tree.BaseTreeNode;
 
 public class NewGenericBaseTreeNodeCellRenderer<T, K>
 	extends

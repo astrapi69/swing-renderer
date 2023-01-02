@@ -32,7 +32,7 @@ import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
 
-import io.github.astrapi69.tree.TreeNode;
+import io.github.astrapi69.gen.tree.TreeNode;
 
 public class TreeNodeCellRenderer<T> extends DefaultTreeCellRenderer
 {

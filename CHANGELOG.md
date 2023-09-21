@@ -1,10 +1,13 @@
 ## Change log
 ----------------------
 
-Version 2.1-SNAPSHOT
+Version 3-SNAPSHOT
 -------------
 
+CHANGED:
 
+- update gradle to new version 8.4-rc-1
+- package structure that fits the module name
 
 Version 2
 -------------

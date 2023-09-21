@@ -28,10 +28,10 @@ module swing.renderer.main
 	requires icon.img.extensions;
 	requires swing.base.components.main;
 
-	exports io.github.astrapi69.swing.tree;
-	exports io.github.astrapi69.swing.tree.label;
-	exports io.github.astrapi69.swing.tree.model;
-	exports io.github.astrapi69.swing.tree.renderer;
-	exports io.github.astrapi69.swing.tree.renderer.list;
-	exports io.github.astrapi69.swing.tree.renderer.state;
+	exports io.github.astrapi69.swing.renderer.tree;
+	exports io.github.astrapi69.swing.renderer.tree.renderer;
+	exports io.github.astrapi69.swing.renderer.tree.renderer.label;
+	exports io.github.astrapi69.swing.renderer.tree.renderer.list;
+	exports io.github.astrapi69.swing.renderer.tree.renderer.model;
+	exports io.github.astrapi69.swing.renderer.tree.renderer.state;
 }

@@ -22,7 +22,7 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.swing.tree;
+package io.github.astrapi69.swing.renderer.tree;
 
 import java.io.Serializable;
 import java.util.LinkedHashMap;
@@ -39,17 +39,17 @@ import lombok.ToString;
 import lombok.experimental.FieldDefaults;
 
 /**
- * The class {@link GenericTreeElement} represents as the name already presume a tree element
+ * The class {@link JTreeElement} represents as the name already presume a tree element
  */
 @Getter
 @Setter
-@EqualsAndHashCode
-@ToString
+@EqualsAndHashCode(exclude = { "parent" })
+@ToString(exclude = { "parent" })
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder(toBuilder = true)
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class GenericTreeElement<T> implements Serializable
+public class JTreeElement implements Serializable
 {
 	public static final String DEFAULT_CONTENT_KEY = "default_content";
 	/** The serial Version UID */
@@ -60,24 +60,22 @@ public class GenericTreeElement<T> implements Serializable
 	/** The name of this tree element. */
 	String name;
 	/** The flag that indicates if this tree element is a node. */
-	boolean leaf;
+	boolean node;
 	/** The flag that indicates if a text label should shown if an icon exists */
 	boolean withText;
 	/** The icon path for a custom tree icon, if not set default icon will be set */
 	String iconPath;
-	/**
-	 * The selected icon path for a custom selected tree icon, if not set default icon will be set
-	 */
-	String selectedIconPath;
+	/** The parent of this tree element. */
+	JTreeElement parent;
 
 	/**
 	 * Gets the default content object from the map
 	 *
 	 * @return the default content object from the map
 	 */
-	public T getDefaultContent()
+	public Object getDefaultContent()
 	{
-		return (T)properties.get(DEFAULT_CONTENT_KEY);
+		return properties.get(DEFAULT_CONTENT_KEY);
 	}
 
 	/**
@@ -87,7 +85,7 @@ public class GenericTreeElement<T> implements Serializable
 	 *            the default content object to set
 	 * @return this object
 	 */
-	public GenericTreeElement<T> setDefaultContent(T defaultContent)
+	public JTreeElement setDefaultContent(Object defaultContent)
 	{
 		properties.put(DEFAULT_CONTENT_KEY, defaultContent);
 		return this;

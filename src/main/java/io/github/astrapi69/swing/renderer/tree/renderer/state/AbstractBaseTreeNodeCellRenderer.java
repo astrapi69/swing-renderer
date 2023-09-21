@@ -22,7 +22,7 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.swing.tree.renderer;
+package io.github.astrapi69.swing.renderer.tree.renderer.state;
 
 import java.awt.Component;
 
@@ -34,10 +34,9 @@ import javax.swing.tree.DefaultTreeCellRenderer;
 
 import io.github.astrapi69.gen.tree.BaseTreeNode;
 
-public class BaseTreeNodeCellRenderer<T, K> extends DefaultTreeCellRenderer
+public class AbstractBaseTreeNodeCellRenderer<T, K> extends DefaultTreeCellRenderer
 {
 	protected final DefaultTreeCellRenderer renderer = new DefaultTreeCellRenderer();
-	protected final JLabel treeLabel = new JLabel("init-tree-label");
 
 	@Override
 	public Component getTreeCellRendererComponent(JTree tree, Object value, boolean selected,
@@ -45,7 +44,8 @@ public class BaseTreeNodeCellRenderer<T, K> extends DefaultTreeCellRenderer
 	{
 		if (value instanceof BaseTreeNode)
 		{
-			return initialize((BaseTreeNode<T, K>)value);
+			BaseTreeNode<T, K> baseTreeNode = (BaseTreeNode<T, K>)value;
+			return initialize(tree, baseTreeNode, selected, expanded, leaf, row, hasFocus);
 		}
 		if (value instanceof DefaultMutableTreeNode)
 		{
@@ -53,15 +53,18 @@ public class BaseTreeNodeCellRenderer<T, K> extends DefaultTreeCellRenderer
 			Object userObject = node.getUserObject();
 			if (userObject instanceof BaseTreeNode)
 			{
-				return initialize((BaseTreeNode<T, K>)userObject);
+				BaseTreeNode<T, K> baseTreeNode = (BaseTreeNode<T, K>)userObject;
+				return initialize(tree, baseTreeNode, selected, expanded, leaf, row, hasFocus);
 			}
 		}
 		return renderer.getTreeCellRendererComponent(tree, value, selected, expanded, leaf, row,
 			hasFocus);
 	}
 
-	protected JLabel initialize(BaseTreeNode<T, K> userObject)
+	protected JLabel initialize(JTree tree, BaseTreeNode<T, K> userObject, boolean selected,
+		boolean expanded, boolean leaf, int row, boolean hasFocus)
 	{
+		JLabel treeLabel = new JLabel("init-tree-label");
 		BaseTreeNode<T, K> treeNode = userObject;
 		String displayValue = treeNode.getDisplayValue();
 		treeLabel.setText(displayValue);

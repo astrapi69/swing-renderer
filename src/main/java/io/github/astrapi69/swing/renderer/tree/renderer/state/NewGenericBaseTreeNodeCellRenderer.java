@@ -22,7 +22,7 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.swing.tree.renderer.state;
+package io.github.astrapi69.swing.renderer.tree.renderer.state;
 
 import java.awt.Color;
 import java.util.LinkedHashMap;
@@ -37,7 +37,7 @@ import org.apache.commons.lang3.StringUtils;
 import io.github.astrapi69.gen.tree.BaseTreeNode;
 import io.github.astrapi69.icon.ImageIconFactory;
 import io.github.astrapi69.icon.StringIcon;
-import io.github.astrapi69.swing.tree.GenericTreeElement;
+import io.github.astrapi69.swing.renderer.tree.GenericTreeElement;
 
 public class NewGenericBaseTreeNodeCellRenderer<T, K>
 	extends

@@ -22,9 +22,7 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.swing.tree.renderer;
-
-import java.awt.Color;
+package io.github.astrapi69.swing.renderer.tree.renderer;
 
 import javax.swing.Icon;
 import javax.swing.JLabel;
@@ -34,27 +32,30 @@ import org.apache.commons.lang3.StringUtils;
 import io.github.astrapi69.gen.tree.BaseTreeNode;
 import io.github.astrapi69.icon.ImageIconFactory;
 import io.github.astrapi69.icon.StringIcon;
-import io.github.astrapi69.swing.tree.GenericTreeElement;
+import io.github.astrapi69.swing.renderer.tree.JTreeElement;
 
-public class GenericBaseTreeNodeCellRenderer<T, K>
-	extends
-		BaseTreeNodeCellRenderer<GenericTreeElement<T>, K>
+public class JBaseTreeNodeCellRenderer extends BaseTreeNodeCellRenderer<JTreeElement, Long>
 {
-	Icon customTreeIcon;
-	Icon selectedTreeIcon;
 
-	protected JLabel initialize(BaseTreeNode<GenericTreeElement<T>, K> userObject)
+	protected JLabel initialize(BaseTreeNode<JTreeElement, Long> userObject)
 	{
-		BaseTreeNode<GenericTreeElement<T>, K> treeNode = userObject;
+		BaseTreeNode<JTreeElement, Long> treeNode = userObject;
 		String displayValue = treeNode.getDisplayValue();
-		GenericTreeElement<T> value = treeNode.getValue();
+		JTreeElement value = treeNode.getValue();
 		if (value != null)
 		{
 			String iconPath = value.getIconPath();
 			if (StringUtils.isNotEmpty(iconPath))
 			{
-				initializeCustomTreeIcon(value);
-				initializeSelectedTreeIcon(value);
+				Icon customTreeIcon;
+				try
+				{
+					customTreeIcon = ImageIconFactory.newImageIcon(iconPath);
+				}
+				catch (Exception e)
+				{
+					customTreeIcon = new StringIcon(this, iconPath);
+				}
 				if (value.isWithText())
 				{
 					this.setText(displayValue);
@@ -69,41 +70,6 @@ public class GenericBaseTreeNodeCellRenderer<T, K>
 			}
 		}
 		return super.initialize(userObject);
-	}
-
-	protected void initializeCustomTreeIcon(GenericTreeElement<T> value)
-	{
-		String iconPath = value.getIconPath();
-		if (StringUtils.isNotEmpty(iconPath))
-		{
-			try
-			{
-				customTreeIcon = ImageIconFactory.newImageIcon(iconPath);
-			}
-			catch (Exception e)
-			{
-				customTreeIcon = new StringIcon(this, iconPath);
-			}
-		}
-	}
-
-	protected void initializeSelectedTreeIcon(GenericTreeElement<T> value)
-	{
-		String selectedIconPath = value.getSelectedIconPath();
-		if (StringUtils.isNotEmpty(selectedIconPath))
-		{
-			try
-			{
-				selectedTreeIcon = ImageIconFactory.newImageIcon(selectedIconPath);
-			}
-			catch (Exception e)
-			{
-				JLabel selectedTreeLabel = new JLabel(this.getText());
-				selectedTreeLabel.setForeground(Color.blue);
-				selectedTreeLabel.setBackground(Color.black);
-				selectedTreeIcon = new StringIcon(selectedTreeLabel, selectedIconPath);
-			}
-		}
 	}
 
 	/**
@@ -129,5 +95,4 @@ public class GenericBaseTreeNodeCellRenderer<T, K>
 	{
 		return renderer.getClosedIcon();
 	}
-
 }

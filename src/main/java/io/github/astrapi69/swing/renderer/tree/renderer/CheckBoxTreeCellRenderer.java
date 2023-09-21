@@ -22,7 +22,7 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.swing.tree.renderer;
+package io.github.astrapi69.swing.renderer.tree.renderer;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -37,8 +37,8 @@ import javax.swing.plaf.ColorUIResource;
 import javax.swing.tree.TreeCellRenderer;
 
 import io.github.astrapi69.swing.component.factory.DimensionFactory;
-import io.github.astrapi69.swing.tree.label.CheckBoxTreeLabel;
-import io.github.astrapi69.swing.tree.model.CheckableTreeNode;
+import io.github.astrapi69.swing.renderer.tree.renderer.label.CheckBoxTreeLabel;
+import io.github.astrapi69.swing.renderer.tree.renderer.model.CheckableTreeNode;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.experimental.FieldDefaults;

@@ -22,24 +22,30 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.swing.tree.renderer;
+package io.github.astrapi69.swing.renderer.tree.renderer;
+
+import java.awt.Color;
 
 import javax.swing.Icon;
 import javax.swing.JLabel;
 
 import org.apache.commons.lang3.StringUtils;
 
-import io.github.astrapi69.gen.tree.TreeNode;
+import io.github.astrapi69.gen.tree.BaseTreeNode;
 import io.github.astrapi69.icon.ImageIconFactory;
 import io.github.astrapi69.icon.StringIcon;
-import io.github.astrapi69.swing.tree.GenericTreeElement;
+import io.github.astrapi69.swing.renderer.tree.GenericTreeElement;
 
-public class GenericTreeNodeCellRenderer<T> extends TreeNodeCellRenderer<GenericTreeElement<T>>
+public class GenericBaseTreeNodeCellRenderer<T, K>
+	extends
+		BaseTreeNodeCellRenderer<GenericTreeElement<T>, K>
 {
+	Icon customTreeIcon;
+	Icon selectedTreeIcon;
 
-	protected JLabel initialize(TreeNode<GenericTreeElement<T>> userObject)
+	protected JLabel initialize(BaseTreeNode<GenericTreeElement<T>, K> userObject)
 	{
-		TreeNode<GenericTreeElement<T>> treeNode = userObject;
+		BaseTreeNode<GenericTreeElement<T>, K> treeNode = userObject;
 		String displayValue = treeNode.getDisplayValue();
 		GenericTreeElement<T> value = treeNode.getValue();
 		if (value != null)
@@ -47,29 +53,57 @@ public class GenericTreeNodeCellRenderer<T> extends TreeNodeCellRenderer<Generic
 			String iconPath = value.getIconPath();
 			if (StringUtils.isNotEmpty(iconPath))
 			{
-				Icon customTreeIcon;
-				try
-				{
-					customTreeIcon = ImageIconFactory.newImageIcon(iconPath);
-				}
-				catch (Exception e)
-				{
-					customTreeIcon = new StringIcon(treeLabel, iconPath);
-				}
+				initializeCustomTreeIcon(value);
+				initializeSelectedTreeIcon(value);
 				if (value.isWithText())
 				{
-					treeLabel.setText(displayValue);
+					this.setText(displayValue);
 				}
 				else
 				{
-					treeLabel.setText("");
+					this.setText("");
 				}
-				treeLabel.setToolTipText(displayValue);
-				treeLabel.setIcon(customTreeIcon);
-				return treeLabel;
+				this.setToolTipText(displayValue);
+				this.setIcon(customTreeIcon);
+				return this;
 			}
 		}
 		return super.initialize(userObject);
+	}
+
+	protected void initializeCustomTreeIcon(GenericTreeElement<T> value)
+	{
+		String iconPath = value.getIconPath();
+		if (StringUtils.isNotEmpty(iconPath))
+		{
+			try
+			{
+				customTreeIcon = ImageIconFactory.newImageIcon(iconPath);
+			}
+			catch (Exception e)
+			{
+				customTreeIcon = new StringIcon(this, iconPath);
+			}
+		}
+	}
+
+	protected void initializeSelectedTreeIcon(GenericTreeElement<T> value)
+	{
+		String selectedIconPath = value.getSelectedIconPath();
+		if (StringUtils.isNotEmpty(selectedIconPath))
+		{
+			try
+			{
+				selectedTreeIcon = ImageIconFactory.newImageIcon(selectedIconPath);
+			}
+			catch (Exception e)
+			{
+				JLabel selectedTreeLabel = new JLabel(this.getText());
+				selectedTreeLabel.setForeground(Color.blue);
+				selectedTreeLabel.setBackground(Color.black);
+				selectedTreeIcon = new StringIcon(selectedTreeLabel, selectedIconPath);
+			}
+		}
 	}
 
 	/**
@@ -95,4 +129,5 @@ public class GenericTreeNodeCellRenderer<T> extends TreeNodeCellRenderer<Generic
 	{
 		return renderer.getClosedIcon();
 	}
+
 }

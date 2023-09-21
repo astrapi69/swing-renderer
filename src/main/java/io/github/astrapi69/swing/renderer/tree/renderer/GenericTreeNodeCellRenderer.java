@@ -22,7 +22,7 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.swing.tree.renderer;
+package io.github.astrapi69.swing.renderer.tree.renderer;
 
 import javax.swing.Icon;
 import javax.swing.JLabel;
@@ -32,16 +32,16 @@ import org.apache.commons.lang3.StringUtils;
 import io.github.astrapi69.gen.tree.TreeNode;
 import io.github.astrapi69.icon.ImageIconFactory;
 import io.github.astrapi69.icon.StringIcon;
-import io.github.astrapi69.swing.tree.JTreeElement;
+import io.github.astrapi69.swing.renderer.tree.GenericTreeElement;
 
-public class JTreeNodeCellRenderer extends TreeNodeCellRenderer<JTreeElement>
+public class GenericTreeNodeCellRenderer<T> extends TreeNodeCellRenderer<GenericTreeElement<T>>
 {
 
-	protected JLabel initialize(TreeNode<JTreeElement> userObject)
+	protected JLabel initialize(TreeNode<GenericTreeElement<T>> userObject)
 	{
-		TreeNode<JTreeElement> treeNode = userObject;
+		TreeNode<GenericTreeElement<T>> treeNode = userObject;
 		String displayValue = treeNode.getDisplayValue();
-		JTreeElement value = treeNode.getValue();
+		GenericTreeElement<T> value = treeNode.getValue();
 		if (value != null)
 		{
 			String iconPath = value.getIconPath();

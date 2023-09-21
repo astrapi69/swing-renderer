@@ -22,54 +22,65 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.swing.tree.renderer;
+package io.github.astrapi69.swing.renderer.tree.renderer;
+
+import java.awt.Component;
 
 import javax.swing.Icon;
 import javax.swing.JLabel;
+import javax.swing.JTree;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeCellRenderer;
 
-import org.apache.commons.lang3.StringUtils;
+import io.github.astrapi69.gen.tree.TreeNode;
 
-import io.github.astrapi69.gen.tree.BaseTreeNode;
-import io.github.astrapi69.icon.ImageIconFactory;
-import io.github.astrapi69.icon.StringIcon;
-import io.github.astrapi69.swing.tree.JTreeElement;
-
-public class JBaseTreeNodeCellRenderer extends BaseTreeNodeCellRenderer<JTreeElement, Long>
+public class TreeNodeCellRenderer<T> extends DefaultTreeCellRenderer
 {
+	protected final DefaultTreeCellRenderer renderer = new DefaultTreeCellRenderer();
+	protected final JLabel treeLabel = new JLabel("init-tree-label");
 
-	protected JLabel initialize(BaseTreeNode<JTreeElement, Long> userObject)
+	@Override
+	public Component getTreeCellRendererComponent(JTree tree, Object value, boolean selected,
+		boolean expanded, boolean leaf, int row, boolean hasFocus)
 	{
-		BaseTreeNode<JTreeElement, Long> treeNode = userObject;
-		String displayValue = treeNode.getDisplayValue();
-		JTreeElement value = treeNode.getValue();
-		if (value != null)
+		if (value instanceof TreeNode)
 		{
-			String iconPath = value.getIconPath();
-			if (StringUtils.isNotEmpty(iconPath))
+			return initialize((TreeNode<T>)value);
+		}
+		if (value instanceof DefaultMutableTreeNode)
+		{
+			DefaultMutableTreeNode node = (DefaultMutableTreeNode)value;
+			Object userObject = node.getUserObject();
+			if (userObject instanceof TreeNode)
 			{
-				Icon customTreeIcon;
-				try
-				{
-					customTreeIcon = ImageIconFactory.newImageIcon(iconPath);
-				}
-				catch (Exception e)
-				{
-					customTreeIcon = new StringIcon(this, iconPath);
-				}
-				if (value.isWithText())
-				{
-					this.setText(displayValue);
-				}
-				else
-				{
-					this.setText("");
-				}
-				this.setToolTipText(displayValue);
-				this.setIcon(customTreeIcon);
-				return this;
+				return initialize((TreeNode<T>)userObject);
 			}
 		}
-		return super.initialize(userObject);
+		return renderer.getTreeCellRendererComponent(tree, value, selected, expanded, leaf, row,
+			hasFocus);
+	}
+
+	protected JLabel initialize(TreeNode<T> userObject)
+	{
+		TreeNode<T> treeNode = userObject;
+		String displayValue = treeNode.getDisplayValue();
+		treeLabel.setText(displayValue);
+		if (treeNode.isLeaf())
+		{
+			treeLabel.setIcon(getLeafIcon());
+		}
+		else
+		{
+			if (treeNode.hasChildren())
+			{
+				treeLabel.setIcon(getOpenIcon());
+			}
+			else
+			{
+				treeLabel.setIcon(getClosedIcon());
+			}
+		}
+		return treeLabel;
 	}
 
 	/**
@@ -95,4 +106,6 @@ public class JBaseTreeNodeCellRenderer extends BaseTreeNodeCellRenderer<JTreeEle
 	{
 		return renderer.getClosedIcon();
 	}
+
+
 }

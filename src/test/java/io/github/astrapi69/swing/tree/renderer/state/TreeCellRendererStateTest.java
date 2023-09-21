@@ -28,6 +28,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
+import io.github.astrapi69.swing.renderer.tree.renderer.state.TreeCellRendererState;
+
 class TreeCellRendererStateTest
 {
 

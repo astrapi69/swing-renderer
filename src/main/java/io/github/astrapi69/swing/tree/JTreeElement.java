@@ -39,7 +39,7 @@ import lombok.ToString;
 import lombok.experimental.FieldDefaults;
 
 /**
- * The class {@link JXTreeElement} represents as the name already presume a tree element
+ * The class {@link JTreeElement} represents as the name already presume a tree element
  */
 @Getter
 @Setter
@@ -49,7 +49,7 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @Builder(toBuilder = true)
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class JXTreeElement implements Serializable
+public class JTreeElement implements Serializable
 {
 	public static final String DEFAULT_CONTENT_KEY = "default_content";
 	/** The serial Version UID */
@@ -66,7 +66,7 @@ public class JXTreeElement implements Serializable
 	/** The icon path for a custom tree icon, if not set default icon will be set */
 	String iconPath;
 	/** The parent of this tree element. */
-	JXTreeElement parent;
+	JTreeElement parent;
 
 	/**
 	 * Gets the default content object from the map
@@ -85,7 +85,7 @@ public class JXTreeElement implements Serializable
 	 *            the default content object to set
 	 * @return this object
 	 */
-	public JXTreeElement setDefaultContent(Object defaultContent)
+	public JTreeElement setDefaultContent(Object defaultContent)
 	{
 		properties.put(DEFAULT_CONTENT_KEY, defaultContent);
 		return this;

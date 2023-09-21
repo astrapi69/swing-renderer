@@ -32,11 +32,11 @@ import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 import javax.swing.UIManager;
 
+import io.github.astrapi69.component.model.check.CheckableItem;
+import io.github.astrapi69.component.model.check.CheckableValue;
+import io.github.astrapi69.swing.tree.renderer.CheckBoxTreeCellRenderer;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
-import io.github.astrapi69.model.check.CheckableItem;
-import io.github.astrapi69.model.check.CheckableValue;
-import io.github.astrapi69.swing.tree.renderer.CheckBoxTreeCellRenderer;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class CheckBoxListRenderer extends CheckBoxTreeCellRenderer

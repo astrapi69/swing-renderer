@@ -29,15 +29,15 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import javax.swing.Icon;
+import javax.swing.JLabel;
 import javax.swing.JTree;
 
 import org.apache.commons.lang3.StringUtils;
-import org.jdesktop.swingx.JXLabel;
 
+import io.github.astrapi69.gen.tree.BaseTreeNode;
 import io.github.astrapi69.icon.ImageIconFactory;
 import io.github.astrapi69.icon.StringIcon;
 import io.github.astrapi69.swing.tree.GenericTreeElement;
-import io.github.astrapi69.gen.tree.BaseTreeNode;
 
 public class NewGenericBaseTreeNodeCellRenderer<T, K>
 	extends
@@ -45,10 +45,10 @@ public class NewGenericBaseTreeNodeCellRenderer<T, K>
 {
 	Map<String, Icon> iconCacheMap = new LinkedHashMap<>();
 
-	protected JXLabel initialize(JTree tree, BaseTreeNode<GenericTreeElement<T>, K> treeNode,
+	protected JLabel initialize(JTree tree, BaseTreeNode<GenericTreeElement<T>, K> treeNode,
 		boolean selected, boolean expanded, boolean leaf, int row, boolean hasFocus)
 	{
-		JXLabel treeLabel = new JXLabel("");
+		JLabel treeLabel = new JLabel("");
 		String displayValue = treeNode.getDisplayValue();
 		treeLabel.setText(displayValue);
 		GenericTreeElement<T> value = treeNode.getValue();

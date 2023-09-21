@@ -29,19 +29,19 @@ import javax.swing.JLabel;
 
 import org.apache.commons.lang3.StringUtils;
 
+import io.github.astrapi69.gen.tree.TreeNode;
 import io.github.astrapi69.icon.ImageIconFactory;
 import io.github.astrapi69.icon.StringIcon;
-import io.github.astrapi69.swing.tree.JXTreeElement;
-import io.github.astrapi69.gen.tree.TreeNode;
+import io.github.astrapi69.swing.tree.JTreeElement;
 
-public class JXTreeNodeCellRenderer extends TreeNodeCellRenderer<JXTreeElement>
+public class JTreeNodeCellRenderer extends TreeNodeCellRenderer<JTreeElement>
 {
 
-	protected JLabel initialize(TreeNode<JXTreeElement> userObject)
+	protected JLabel initialize(TreeNode<JTreeElement> userObject)
 	{
-		TreeNode<JXTreeElement> treeNode = userObject;
+		TreeNode<JTreeElement> treeNode = userObject;
 		String displayValue = treeNode.getDisplayValue();
-		JXTreeElement value = treeNode.getValue();
+		JTreeElement value = treeNode.getValue();
 		if (value != null)
 		{
 			String iconPath = value.getIconPath();

@@ -32,14 +32,12 @@ import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
 
-import org.jdesktop.swingx.JXLabel;
-
 import io.github.astrapi69.gen.tree.BaseTreeNode;
 
 public class BaseTreeNodeCellRenderer<T, K> extends DefaultTreeCellRenderer
 {
 	protected final DefaultTreeCellRenderer renderer = new DefaultTreeCellRenderer();
-	protected final JXLabel treeLabel = new JXLabel("init-tree-label");
+	protected final JLabel treeLabel = new JLabel("init-tree-label");
 
 	@Override
 	public Component getTreeCellRendererComponent(JTree tree, Object value, boolean selected,

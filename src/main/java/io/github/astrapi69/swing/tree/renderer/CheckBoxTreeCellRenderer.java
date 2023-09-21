@@ -36,12 +36,12 @@ import javax.swing.UIManager;
 import javax.swing.plaf.ColorUIResource;
 import javax.swing.tree.TreeCellRenderer;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.experimental.FieldDefaults;
 import io.github.astrapi69.swing.component.factory.DimensionFactory;
 import io.github.astrapi69.swing.tree.label.CheckBoxTreeLabel;
 import io.github.astrapi69.swing.tree.model.CheckableTreeNode;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.experimental.FieldDefaults;
 
 @Getter
 @FieldDefaults(level = AccessLevel.PRIVATE)

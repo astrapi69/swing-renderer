@@ -27,11 +27,10 @@ package io.github.astrapi69.swing.tree.renderer.state;
 import java.awt.Component;
 
 import javax.swing.Icon;
+import javax.swing.JLabel;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
-
-import org.jdesktop.swingx.JXLabel;
 
 import io.github.astrapi69.gen.tree.BaseTreeNode;
 
@@ -62,10 +61,10 @@ public class AbstractBaseTreeNodeCellRenderer<T, K> extends DefaultTreeCellRende
 			hasFocus);
 	}
 
-	protected JXLabel initialize(JTree tree, BaseTreeNode<T, K> userObject, boolean selected,
+	protected JLabel initialize(JTree tree, BaseTreeNode<T, K> userObject, boolean selected,
 		boolean expanded, boolean leaf, int row, boolean hasFocus)
 	{
-		JXLabel treeLabel = new JXLabel("init-tree-label");
+		JLabel treeLabel = new JLabel("init-tree-label");
 		BaseTreeNode<T, K> treeNode = userObject;
 		String displayValue = treeNode.getDisplayValue();
 		treeLabel.setText(displayValue);

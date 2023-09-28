@@ -34,6 +34,9 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
+/**
+ * The class {@link CheckableTreeNode}
+ */
 @Getter
 @Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -42,22 +45,47 @@ public class CheckableTreeNode extends DefaultMutableTreeNode
 
 	boolean selected;
 
+	/**
+	 * Instantiates a new Checkable tree node.
+	 */
 	public CheckableTreeNode()
 	{
 		this(null);
 	}
 
+	/**
+	 * Instantiates a new Checkable tree node.
+	 *
+	 * @param userObject
+	 *            the user object
+	 */
 	public CheckableTreeNode(Object userObject)
 	{
 		this(userObject, true, false);
 	}
 
+	/**
+	 * Instantiates a new Checkable tree node.
+	 *
+	 * @param userObject
+	 *            the user object
+	 * @param allowsChildren
+	 *            the allows children
+	 * @param isSelected
+	 *            the is selected
+	 */
 	public CheckableTreeNode(Object userObject, boolean allowsChildren, boolean isSelected)
 	{
 		super(userObject, allowsChildren);
 		this.selected = isSelected;
 	}
 
+	/**
+	 * Sets the selected flag
+	 *
+	 * @param selected
+	 *            the selected flag to set
+	 */
 	@SuppressWarnings("unchecked")
 	public void setSelected(boolean selected)
 	{
@@ -70,6 +98,9 @@ public class CheckableTreeNode extends DefaultMutableTreeNode
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void setUserObject(Object obj)
 	{

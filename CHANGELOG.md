@@ -8,6 +8,12 @@ ADDED:
 
 - new getter method in class GenericTreeElement for the 'properties' field and changed to type LinkedHashMap
 
+CHANGED:
+
+- update gradle to new version 8.4-rc-2
+- update of dependency gen-tree to new major version 9
+
+
 Version 3
 -------------
 

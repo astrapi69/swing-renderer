@@ -39,12 +39,27 @@ import io.github.astrapi69.icon.ImageIconFactory;
 import io.github.astrapi69.icon.StringIcon;
 import io.github.astrapi69.swing.renderer.tree.GenericTreeElement;
 
+/**
+ * The class {@link NewGenericBaseTreeNodeCellRenderer}
+ *
+ * @param <T>
+ *            the type parameter
+ * @param <K>
+ *            the type parameter
+ */
 public class NewGenericBaseTreeNodeCellRenderer<T, K>
 	extends
 		AbstractBaseTreeNodeCellRenderer<GenericTreeElement<T>, K>
 {
+
+	/**
+	 * The Icon cache map
+	 */
 	Map<String, Icon> iconCacheMap = new LinkedHashMap<>();
 
+	/**
+	 * {@inheritDoc}
+	 */
 	protected JLabel initialize(JTree tree, BaseTreeNode<GenericTreeElement<T>, K> treeNode,
 		boolean selected, boolean expanded, boolean leaf, int row, boolean hasFocus)
 	{
@@ -99,6 +114,13 @@ public class NewGenericBaseTreeNodeCellRenderer<T, K>
 		return super.initialize(tree, treeNode, selected, expanded, leaf, row, hasFocus);
 	}
 
+	/**
+	 * Initialize custom tree icon icon.
+	 *
+	 * @param value
+	 *            the value
+	 * @return the icon
+	 */
 	protected Icon initializeCustomTreeIcon(GenericTreeElement<T> value)
 	{
 		String iconPath = value.getIconPath();
@@ -121,6 +143,13 @@ public class NewGenericBaseTreeNodeCellRenderer<T, K>
 		return iconCacheMap.get(iconPath);
 	}
 
+	/**
+	 * Initialize selected tree icon.
+	 *
+	 * @param value
+	 *            the value
+	 * @return the icon
+	 */
 	protected Icon initializeSelectedTreeIcon(GenericTreeElement<T> value)
 	{
 		String selectedIconPath = value.getSelectedIconPath();
@@ -169,7 +198,7 @@ public class NewGenericBaseTreeNodeCellRenderer<T, K>
 
 	/**
 	 * Returns the color if the tree node is selected
-	 * 
+	 *
 	 * @return the color if the tree node is selected
 	 */
 	protected Color getSelectedLabelForeground()
@@ -179,7 +208,7 @@ public class NewGenericBaseTreeNodeCellRenderer<T, K>
 
 	/**
 	 * Returns the color if the tree node is not selected
-	 * 
+	 *
 	 * @return the color if the tree node is not selected
 	 */
 	protected Color getLabelForeground()

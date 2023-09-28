@@ -70,8 +70,10 @@ public class GenericTreeElement<T> implements Serializable
 	 */
 	String selectedIconPath;
 
-	public LinkedHashMap<String, Object> getProperties() {
-		if(properties == null) {
+	public LinkedHashMap<String, Object> getProperties()
+	{
+		if (properties == null)
+		{
 			this.properties = new LinkedHashMap<>();
 		}
 		return properties;

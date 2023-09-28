@@ -34,10 +34,25 @@ import javax.swing.tree.DefaultTreeCellRenderer;
 
 import io.github.astrapi69.gen.tree.BaseTreeNode;
 
+/**
+ * The class {@link AbstractBaseTreeNodeCellRenderer}
+ *
+ * @param <T>
+ *            the type parameter
+ * @param <K>
+ *            the type parameter
+ */
 public class AbstractBaseTreeNodeCellRenderer<T, K> extends DefaultTreeCellRenderer
 {
+
+	/**
+	 * The decorated renderer
+	 */
 	protected final DefaultTreeCellRenderer renderer = new DefaultTreeCellRenderer();
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Component getTreeCellRendererComponent(JTree tree, Object value, boolean selected,
 		boolean expanded, boolean leaf, int row, boolean hasFocus)
@@ -61,6 +76,25 @@ public class AbstractBaseTreeNodeCellRenderer<T, K> extends DefaultTreeCellRende
 			hasFocus);
 	}
 
+	/**
+	 * Initialize the {@link JLabel} object
+	 *
+	 * @param tree
+	 *            the tree
+	 * @param userObject
+	 *            the user object
+	 * @param selected
+	 *            the selected
+	 * @param expanded
+	 *            the expanded
+	 * @param leaf
+	 *            the leaf
+	 * @param row
+	 *            the row
+	 * @param hasFocus
+	 *            the flag if the {@link JLabel} object has the focus
+	 * @return the {@link JLabel} object
+	 */
 	protected JLabel initialize(JTree tree, BaseTreeNode<T, K> userObject, boolean selected,
 		boolean expanded, boolean leaf, int row, boolean hasFocus)
 	{

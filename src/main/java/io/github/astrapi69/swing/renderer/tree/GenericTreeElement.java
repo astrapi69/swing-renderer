@@ -24,9 +24,9 @@
  */
 package io.github.astrapi69.swing.renderer.tree;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.LinkedHashMap;
-import java.util.Map;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -53,10 +53,10 @@ public class GenericTreeElement<T> implements Serializable
 {
 	public static final String DEFAULT_CONTENT_KEY = "default_content";
 	/** The serial Version UID */
+	@Serial
 	private static final long serialVersionUID = 1L;
 	/** The map with optional properties */
-	@Builder.Default
-	final Map<String, Object> properties = new LinkedHashMap<>();
+	LinkedHashMap<String, Object> properties;
 	/** The name of this tree element. */
 	String name;
 	/** The flag that indicates if this tree element is a node. */
@@ -70,6 +70,13 @@ public class GenericTreeElement<T> implements Serializable
 	 */
 	String selectedIconPath;
 
+	public LinkedHashMap<String, Object> getProperties() {
+		if(properties == null) {
+			this.properties = new LinkedHashMap<>();
+		}
+		return properties;
+	}
+
 	/**
 	 * Gets the default content object from the map
 	 *
@@ -77,7 +84,7 @@ public class GenericTreeElement<T> implements Serializable
 	 */
 	public T getDefaultContent()
 	{
-		return (T)properties.get(DEFAULT_CONTENT_KEY);
+		return (T)getProperties().get(DEFAULT_CONTENT_KEY);
 	}
 
 	/**
@@ -89,7 +96,7 @@ public class GenericTreeElement<T> implements Serializable
 	 */
 	public GenericTreeElement<T> setDefaultContent(T defaultContent)
 	{
-		properties.put(DEFAULT_CONTENT_KEY, defaultContent);
+		getProperties().put(DEFAULT_CONTENT_KEY, defaultContent);
 		return this;
 	}
 }

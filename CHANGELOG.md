@@ -4,7 +4,9 @@
 Version 3.1-SNAPSHOT
 -------------
 
+ADDED:
 
+- new getter method in class GenericTreeElement for the 'properties' field and changed to type LinkedHashMap
 
 Version 3
 -------------

@@ -12,6 +12,7 @@ CHANGED:
 
 - update gradle to new version 8.4-rc-2
 - update of dependency gen-tree to new major version 9
+- update of test dependency 'com.github.meanbeanlib:meanbean' to the new version 3.0.0-M9
 
 
 Version 3

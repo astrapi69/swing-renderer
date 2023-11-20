@@ -27,6 +27,7 @@ package io.github.astrapi69.swing.renderer.tree;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.LinkedHashMap;
+import java.util.Map;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -55,8 +56,9 @@ public class GenericTreeElement<T> implements Serializable
 	/** The serial Version UID */
 	@Serial
 	private static final long serialVersionUID = 1L;
+
 	/** The map with optional properties */
-	LinkedHashMap<String, Object> properties;
+	Map<String, Object> properties;
 	/** The name of this tree element. */
 	String name;
 	/** The flag that indicates if this tree element is a node. */
@@ -70,7 +72,7 @@ public class GenericTreeElement<T> implements Serializable
 	 */
 	String selectedIconPath;
 
-	public LinkedHashMap<String, Object> getProperties()
+	public Map<String, Object> getProperties()
 	{
 		if (properties == null)
 		{

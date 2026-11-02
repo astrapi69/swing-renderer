@@ -23,10 +23,13 @@ module swing.renderer.main
 	requires lombok;
 	requires java.desktop;
 	requires component.model.main;
-	requires gen.tree;
+	requires io.github.astrapisixtynine.data.api;
+	requires io.github.astrapisixtynine.design.patterns.visitor;
+	requires io.github.astrapisixtynine.gen.tree;
+	requires io.github.astrapisixtynine.tree.api;
 	requires org.apache.commons.lang3;
 	requires icon.img.extensions;
-	requires swing.base.components.main;
+	requires io.github.astrapisixtynine.swing.base.components;
 
 	exports io.github.astrapi69.swing.renderer.tree;
 	exports io.github.astrapi69.swing.renderer.tree.renderer;
